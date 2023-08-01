@@ -1,30 +1,19 @@
-// create web server
-// create a route for /comments
-// send back some dummy data
+// create web servver
+===============================================*/
 
+import module
 const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const router = express.Router();
+const commentcontroller = require('../controllers/comments');
 
-const app = express();
+hendle request
+router.post('/add', commentcontroller.add);
+router.get('/list/:id', commentcontroller.list);
+router.get('/list', commentcontroller.list);
+router.put('/update/:id', commentcontroller.update);
+router.delete('/delete/:id', commentcontroller.delete);
 
-app.use(cors());
-app.use(bodyParser.json());
-
-const comments = require('./comments.json');
-
-app.get('/comments', (req, res) => {
-    res.json(comments);
-});
-
-app.post('/comments', (req, res) => {
-    comments.push(req.body);
-    res.json({
-        success: true,
-        message: 'Thanks for your comment'
-    });
-});
-
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+export
+module.exports = router;router.post('/addcomment', commentcontroller.addcomment);
+router.get('/getcomment', commentcontroller.getcomment);
+router.get('/getcomment/:id', commentcontroller.getcommentbyid);
